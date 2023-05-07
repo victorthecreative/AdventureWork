@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_credit_card
+    description: Dimensão com as informações sobre aos cartões de credito
+    columns:
+      - name: credit_card_sk
+        description: Chave substituta do `credit_card_id`
+        tests:
+          - unique
+          - not_null
+      
+      - name: credit_card_id
+        description: Chave primária da tabela
+
+      - name: credit_card_type
+        description: Tipo do cartão de crédito
