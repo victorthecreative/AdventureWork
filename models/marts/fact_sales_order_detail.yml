@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: fact_sales_order_detail
+    description: Tabela fato de vendas.
+
+    columns:
+      - name: sales_order_detail_sales_order_sk
+        description: Chave substituta para a `sales_order_detail_sales_order_id`
+        tests:
+          - unique
+          - not_null
+
+      - name: sales_order_detail_sales_order_id
+        description: identificador da venda na tabela de detalhes da venda
+
+      - name: customer_sk
+        description: chave da dimensão do cliente
+
+      - name: sales_order_header_order_date
+        description: data do pedido na tabela de cabeçalho de venda
+
+      - name: sales_order_header_due_date
+        description: data de vencimento do pedido na tabela de cabeçalho de venda
+
+      - name: sales_order_header_ship_date
+        description: data de envio do pedido na tabela de cabeçalho de venda
+
+      - name: sales_order_header_ship_to_address_id
+        description: identificador do endereço de envio na tabela de cabeçalho de venda
+
+      - name: sales_order_header_bill_to_address_id
+        description: identificador do endereço de cobrança na tabela de cabeçalho de venda
+
+      - name: sales_order_header_status
+        description: status do pedido na tabela de cabeçalho de venda
+
+      - name: ship_to_address_sk
+        description: chave da dimensão do endereço de envio
+
+      - name: bill_to_address_sk
+        description: chave da dimensão do endereço de cobrança
+
+      - name: sales_order_header_territory_id
+        description: identificador do território do pedido na tabela de cabeçalho de venda
+
+      - name: product_sk
+        description: chave da dimensão do produto
+
+      - name: sales_order_header_sales_reason_sales_order_sk
+        description: identificador do motivo de venda na tabela de cabeçalho de venda
+
+      - name: sales_order_detail_order_qty
+        description: quantidade do produto na venda na tabela de detalhes da venda
+
+      - name: sales_order_detail_unit_price
+        description: preço unitário do produto na venda na tabela de detalhes da venda
+
+      - name: sales_order_detail_unit_price_discount
+        description: desconto unitário do produto na venda na tabela de detalhes da venda
+
+      - name: sales_order_header_subtotal
+        description: subtotal da venda na tabela de cabeçalho de venda
+
+      - name: sales_order_header_total_due
+        description: total a pagar da venda na tabela de cabeçalho de venda
+
+      - name: credit_card_sk
+        description: chave da dimensão do cartão de crédito utilizado na venda
