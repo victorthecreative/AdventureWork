@@ -5,7 +5,7 @@ with
             ,credit_card_id
             ,credit_card_type
 
-        from {{ref('stg_sales_credit_card')}}
+        from {{ ref('stg_sap__sales_credit_card') }}
     )
 
 select *

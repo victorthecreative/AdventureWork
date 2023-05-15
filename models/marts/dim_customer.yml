@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: Dimensão contendo as informações relacionadas aos clientes
+
+    columns:
+      - name: customer_sk
+        description: Chave substituta para o customer_id
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: Chave primária da tabela de origem `customer`
+
+      - name: customer_name
+        description: Nome completo do cliente 
+      
+      - name: customer_territory_id
+        description: Código do território do cliente.
