@@ -79,26 +79,26 @@ with
         )
     ,sales_order_detail_sales_order_sk as ( 
         select
-            row_number() over(order by join_tables.sales_order_detail_sales_order_id) as sales_order_detail_sales_order_sk
-            ,join_tables.sales_order_detail_sales_order_id
-            ,dim_customer.customer_sk
-            ,join_tables.sales_order_header_order_date
-            ,join_tables.sales_order_header_due_date
-            ,join_tables.sales_order_header_ship_date
-            ,join_tables.sales_order_header_ship_to_address_id
-            ,join_tables.sales_order_header_bill_to_address_id
-            ,join_tables.sales_order_header_status
+            row_number() over(order by join_tables.sales_order_detail_sales_order_id) as sales_order_sk
+            ,join_tables.sales_order_detail_sales_order_id as sales_order_id
+            ,dim_customer.customer_sk as sales_order_customer_sk
+            ,join_tables.sales_order_header_order_date as sales_order_date
+            ,join_tables.sales_order_header_due_date as sales_order_due_date
+            ,join_tables.sales_order_header_ship_date as sales_order_ship_date
+            ,join_tables.sales_order_header_ship_to_address_id as sales_order_ship_to_address_id
+            ,join_tables.sales_order_header_bill_to_address_id as sales_order_bill_to_address_id
+            ,join_tables.sales_order_header_status as sales_order_status
             ,ship_address.address_sk as ship_to_address_sk
             ,bill_address.address_sk as bill_to_address_sk
-            ,join_tables.sales_order_header_territory_id
-            ,dim_product.product_sk
-            ,dim_sales_reason.sales_order_header_sales_reason_sales_order_sk
-            ,join_tables.sales_order_detail_order_qty
-            ,join_tables.sales_order_detail_unit_price
-            ,join_tables.sales_order_detail_unit_price_discount
-            ,join_tables.sales_order_header_subtotal
-            ,join_tables.sales_order_header_total_due
-            ,dim_credit_card.credit_card_sk
+            ,join_tables.sales_order_header_territory_id as sales_order_territory_id
+            ,dim_product.product_sk as sales_order_product_sk
+            ,dim_sales_reason.sales_order_header_sales_reason_sales_order_sk as sales_order_reason_sales_order_sk
+            ,join_tables.sales_order_detail_order_qty as sales_order_order_qty
+            ,join_tables.sales_order_detail_unit_price as sales_order_unit_price
+            ,join_tables.sales_order_detail_unit_price_discount as sales_order_price_discount
+            ,join_tables.sales_order_header_subtotal as sales_order_subtotal
+            ,join_tables.sales_order_header_total_due as sales_order_total_due
+            ,dim_credit_card.credit_card_sk as sales_order_credit_card_sk
         from join_tables
         left join dim_address as ship_address on join_tables.sales_order_header_ship_to_address_id = ship_address.address_id
         left join dim_address as bill_address on join_tables.sales_order_header_bill_to_address_id = bill_address.address_id
